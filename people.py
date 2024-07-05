@@ -10,9 +10,12 @@ class People(pg.sprite.Sprite):
         match random.randint(1, 2):
             case 1:
                 self.image = pg.image.load("assets/people/people 1.png")
-                self.images = [pg.transform.scale(pg.image.load(f"assets/people/people_1_{i}.png"), (56, 64)) for i in range(4)]
+                self.images = [pg.transform.scale(pg.image.load(f"assets/people/people_1_{i}.png"), (56, 64))
+                               for i in range(4)]
             case 2:
                 self.image = pg.image.load("assets/people/people 2.png")
+                self.images = [pg.transform.scale(pg.image.load(f"assets/people/people_2_{i}.png"), (56, 64))
+                               for i in range(4)]
 
         self.image = pg.transform.scale(self.image, (56, 64))
 
