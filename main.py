@@ -1,5 +1,5 @@
 import pygame
-from people import People
+from people import Man, Woman
 
 from typing import Optional
 
@@ -28,10 +28,11 @@ def main():
     # Create group object
     group: Optional[pygame.sprite.Group] = pygame.sprite.Group()
 
-    # Create first people
-    people_0: Optional[pygame.sprite] = People(width // 2, height // 2)
+    # Create first peoples
+    people_0: Optional[pygame.sprite] = Man(width // 2, height // 2)
+    people_1: Optional[pygame.sprite] = Woman(width // 2, height // 2)
     # Append in group
-    group.add(people_0)
+    group.add(people_0, people_1)
 
     # Game loop
     while 1:

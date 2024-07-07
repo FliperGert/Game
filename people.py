@@ -6,19 +6,9 @@ class People(pg.sprite.Sprite):
     def __init__(self, x, y):
         pg.sprite.Sprite.__init__(self)
 
-        # Set up image
-        match random.randint(1, 2):
-            case 1:
-                self.image = pg.image.load("assets/people/people 1.png")
-                self.images = [pg.transform.scale(pg.image.load(f"assets/people/people_1_{i}.png"), (56, 64))
-                               for i in range(4)]
-            case 2:
-                self.image = pg.image.load("assets/people/people 2.png")
-                self.images = [pg.transform.scale(pg.image.load(f"assets/people/people_2_{i}.png"), (56, 64))
-                               for i in range(4)]
-
         self.image = pg.transform.scale(self.image, (56, 64))
-
+        self.image = pg.image.load("assets/people/people 1.png")
+        self.images = [pg.transform.scale(pg.image.load(f"assets/people/people_1_{i}.png"), (56, 64))for i in range(4)]
         # Set up hitbox
         self.rect = self.image.get_rect()
 
@@ -39,7 +29,6 @@ class People(pg.sprite.Sprite):
         self.flip: bool = False
 
         self.index: int = 0
-
     def update(self):
         match random.randint(1, 7):
             case 1:
@@ -107,3 +96,29 @@ class People(pg.sprite.Sprite):
             if self.flip:
                 self.image = pg.transform.flip(self.image, True, False)
         self.flip = False
+
+class Man(People):
+    def __init__(self, x, y):
+        super().__init__(x, y)
+
+        # Set up image of Man
+        self.image = pg.image.load("assets/people/people 2.png")
+        self.images = [pg.transform.scale(pg.image.load(f"assets/people/people_2_{i}.png"), (56, 64))
+                    for i in range(4)]
+
+
+class Woman(People):
+    def __init__(self, x, y):
+        super().__init__(x, y)
+
+        # Set up image of Woman
+        self.image = pg.image.load("assets/people/people 2.png")
+        self.images = [pg.transform.scale(pg.image.load(f"assets/people/people_2_{i}.png"), (56, 64))
+            for i in range(4)]
+
+
+
+
+
+
+
