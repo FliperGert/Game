@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="004001f4-0210-4394-a426-c7914eb7370b" name="Changes" comment="Наведение мыши на человека отображает его имя">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/people.py" beforeDir="false" afterPath="$PROJECT_DIR$/people.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tasklist.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tasklist.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -216,7 +216,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720432058232</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Наведение мыши на человека отображает его имя">
+      <option name="closed" value="true" />
+      <created>1720437875365</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1720437875365</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

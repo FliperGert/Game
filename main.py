@@ -34,6 +34,7 @@ def main():
     # Append in group
     group.add(people_0, people_1)
 
+    x = y = 0
     # Game loop
     while 1:
         # FPS
@@ -43,12 +44,19 @@ def main():
         for e in pygame.event.get():
             if e.type == pygame.QUIT:
                 raise SystemExit
+            if e.type == pygame.MOUSEBUTTONDOWN:
+                pygame.mouse.get_rel()
+            if e.type == pygame.MOUSEBUTTONUP:
+                x, y = pygame.mouse.get_rel()
 
         group.draw(screen)
         pygame.display.update()
         screen.fill(GREEN)
+
         for pl in group:
             pl.update(screen)
+            pl.rect.x += x // 5
+            pl.rect.y += y // 5
 
 
 if __name__ == "__main__":
