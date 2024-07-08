@@ -64,7 +64,7 @@ class People(pg.sprite.Sprite):
 
         # Check mouse on people
         if self.rect.collidepoint(pg.mouse.get_pos()):
-            surf = self.font.render(self._name, False, (0, 0, 0))
+            surf = self.font.render(self._name, False, (0, 0, 0), (125, 124, 90))
             screen.blit(surf, (self.rect.topleft[0]+10, self.rect.topleft[1]-20))
 
     def move(self):
