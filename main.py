@@ -47,7 +47,8 @@ def main():
         group.draw(screen)
         pygame.display.update()
         screen.fill(GREEN)
-        people_0.update()
+        for pl in group:
+            pl.update()
 
 
 if __name__ == "__main__":

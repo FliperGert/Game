@@ -3,12 +3,11 @@ import random
 
 
 class People(pg.sprite.Sprite):
-    def __init__(self, x, y):
+    def __init__(self, x: int, y: int):
         pg.sprite.Sprite.__init__(self)
 
-        self.image = pg.transform.scale(self.image, (56, 64))
-        self.image = pg.image.load("assets/people/people 1.png")
-        self.images = [pg.transform.scale(pg.image.load(f"assets/people/people_1_{i}.png"), (56, 64))for i in range(4)]
+        self.image = pg.image.load("assets/people/people 2.png")
+        self.images = None
         # Set up hitbox
         self.rect = self.image.get_rect()
 
@@ -29,6 +28,7 @@ class People(pg.sprite.Sprite):
         self.flip: bool = False
 
         self.index: int = 0
+
     def update(self):
         match random.randint(1, 7):
             case 1:
@@ -85,7 +85,7 @@ class People(pg.sprite.Sprite):
         self.rect.y += self.yvel
 
     def animation(self):
-        if self.index == len(self.images)-1:
+        if self.index == len(self.images) - 1:
             self.index = 0
         else:
             self.index += 1
@@ -97,28 +97,22 @@ class People(pg.sprite.Sprite):
                 self.image = pg.transform.flip(self.image, True, False)
         self.flip = False
 
+
 class Man(People):
     def __init__(self, x, y):
-        super().__init__(x, y)
+        People.__init__(self, x, y)
 
         # Set up image of Man
-        self.image = pg.image.load("assets/people/people 2.png")
-        self.images = [pg.transform.scale(pg.image.load(f"assets/people/people_2_{i}.png"), (56, 64))
-                    for i in range(4)]
+        self.image = pg.transform.scale(pg.image.load("assets/people/people 1.png"), (56, 64))
+        self.images = [pg.transform.scale(pg.image.load(f"assets/people/people_1_{i}.png"), (56, 64))
+                       for i in range(4)]
 
 
 class Woman(People):
     def __init__(self, x, y):
-        super().__init__(x, y)
+        People.__init__(self, x, y)
 
         # Set up image of Woman
-        self.image = pg.image.load("assets/people/people 2.png")
+        self.image = pg.transform.scale(pg.image.load("assets/people/people 2.png"), (56, 64))
         self.images = [pg.transform.scale(pg.image.load(f"assets/people/people_2_{i}.png"), (56, 64))
-            for i in range(4)]
-
-
-
-
-
-
-
+                       for i in range(4)]
