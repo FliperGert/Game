@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="004001f4-0210-4394-a426-c7914eb7370b" name="Changes" comment="last save">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="004001f4-0210-4394-a426-c7914eb7370b" name="Changes" comment="Доделал разделение">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/people.py" beforeDir="false" afterPath="$PROJECT_DIR$/people.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -193,7 +191,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720177415049</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Доделал разделение">
+      <option name="closed" value="true" />
+      <created>1720416737971</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1720416737971</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -221,6 +227,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="last save" />
-    <option name="LAST_COMMIT_MESSAGE" value="last save" />
+    <MESSAGE value="Доделал разделение" />
+    <option name="LAST_COMMIT_MESSAGE" value="Доделал разделение" />
   </component>
 </project>

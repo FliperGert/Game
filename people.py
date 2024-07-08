@@ -1,6 +1,9 @@
 import pygame as pg
 import random
 
+men_names = ["Jord", 'James', "Ricard"]
+women_names = ['Jona', 'Emma', 'Olivia']
+
 
 class People(pg.sprite.Sprite):
     def __init__(self, x: int, y: int):
@@ -28,6 +31,9 @@ class People(pg.sprite.Sprite):
         self.flip: bool = False
 
         self.index: int = 0
+
+        # Create name
+        self._name: str = ""
 
     def update(self):
         match random.randint(1, 7):
@@ -97,6 +103,10 @@ class People(pg.sprite.Sprite):
                 self.image = pg.transform.flip(self.image, True, False)
         self.flip = False
 
+    @property
+    def get_name(self):
+        return self._name
+
 
 class Man(People):
     def __init__(self, x, y):
@@ -107,6 +117,9 @@ class Man(People):
         self.images = [pg.transform.scale(pg.image.load(f"assets/people/people_1_{i}.png"), (56, 64))
                        for i in range(4)]
 
+        # Random set name
+        self._name = random.choice(men_names)
+
 
 class Woman(People):
     def __init__(self, x, y):
@@ -116,3 +129,9 @@ class Woman(People):
         self.image = pg.transform.scale(pg.image.load("assets/people/people 2.png"), (56, 64))
         self.images = [pg.transform.scale(pg.image.load(f"assets/people/people_2_{i}.png"), (56, 64))
                        for i in range(4)]
+
+        # Random set name
+        self._name = random.choice(women_names)
+
+
+    
