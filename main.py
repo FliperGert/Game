@@ -4,8 +4,8 @@ from people import Man, Woman
 from typing import Optional
 
 # Constants
-WIDTH = 600
-HEIGHT = 400
+WIDTH = 1200
+HEIGHT = 700
 
 GREEN = (0, 255, 0)
 
@@ -48,7 +48,7 @@ def main():
         pygame.display.update()
         screen.fill(GREEN)
         for pl in group:
-            pl.update()
+            pl.update(screen)
 
 
 if __name__ == "__main__":

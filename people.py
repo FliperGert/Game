@@ -35,7 +35,10 @@ class People(pg.sprite.Sprite):
         # Create name
         self._name: str = ""
 
-    def update(self):
+        # Output name
+        self.font = pg.font.SysFont('arial', 12)
+
+    def update(self, screen):
         match random.randint(1, 7):
             case 1:
                 self.down = True
@@ -58,6 +61,11 @@ class People(pg.sprite.Sprite):
                 self.left = self.right = False
 
         self.move()
+
+        # Check mouse on people
+        if self.rect.collidepoint(pg.mouse.get_pos()):
+            surf = self.font.render(self._name, False, (0, 0, 0))
+            screen.blit(surf, (self.rect.topleft[0]+10, self.rect.topleft[1]-20))
 
     def move(self):
         pg.time.delay(20)
@@ -103,7 +111,6 @@ class People(pg.sprite.Sprite):
                 self.image = pg.transform.flip(self.image, True, False)
         self.flip = False
 
-    @property
     def get_name(self):
         return self._name
 
