@@ -32,7 +32,8 @@ def main():
     people_0: Optional[pygame.sprite] = Man(width // 2, height // 2)
     people_1: Optional[pygame.sprite] = Woman(width // 2, height // 2)
     # Append in group
-    group.add(people_0, people_1)
+    group.add(people_0)
+    group.add(people_1)
 
     x = y = 0
     # Game loop
@@ -55,8 +56,9 @@ def main():
 
         for pl in group:
             pl.update(screen)
-            pl.rect.x += x // 5
-            pl.rect.y += y // 5
+            pl.rect.x += x // 2
+            pl.rect.y += y // 2
+        x = y = 0
 
 
 if __name__ == "__main__":
