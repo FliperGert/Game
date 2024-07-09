@@ -1,7 +1,9 @@
-import pygame
-from people import Man, Woman
-
 from typing import Optional
+
+import pygame
+import random
+
+from people import Man, Woman
 
 # Constants
 WIDTH = 1200
@@ -19,6 +21,8 @@ def main():
     width = WIDTH
     height = HEIGHT
 
+    idef = 2
+
     # Create var screen
     screen = pygame.display.set_mode((width, height))
 
@@ -29,17 +33,35 @@ def main():
     group: Optional[pygame.sprite.Group] = pygame.sprite.Group()
 
     # Create first peoples
-    people_0: Optional[pygame.sprite] = Man(width // 2, height // 2)
-    people_1: Optional[pygame.sprite] = Woman(width // 2, height // 2)
+    people_0: Optional[pygame.sprite] = Man(width // 2, height // 2, 0)
+    people_1: Optional[pygame.sprite] = Woman(width // 2, height // 2, 1)
     # Append in group
-    group.add(people_0)
-    group.add(people_1)
+    group.add(people_0, people_1)
 
     x = y = 0
+
+    # Function update people
+    def update_people(pl, x, y):
+        pl.update(screen)
+        pl.rect.x += x // 2
+        pl.rect.y += y // 2
     # Game loop
     while 1:
         # FPS
         pygame.time.Clock().tick(60)
+
+        # Create a random reproduction
+        f = random.randint(1, 50)
+        if f == 1:
+            idef += 1
+
+            f1 = random.randint(1, 2)
+            if f1 == 1:
+                d: Optional[pygame.sprite] = Man(width // 2, height // 2, idef)
+                group.add(d)
+            if f1 == 2:
+                d: Optional[pygame.sprite] = Woman(width // 2, height // 2, idef)
+                group.add(d)
 
         # Check events
         for e in pygame.event.get():
@@ -55,9 +77,7 @@ def main():
         screen.fill(GREEN)
 
         for pl in group:
-            pl.update(screen)
-            pl.rect.x += x // 2
-            pl.rect.y += y // 2
+            update_people(pl, x, y)
         x = y = 0
 
 

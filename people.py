@@ -6,7 +6,7 @@ women_names = ['Jona', 'Emma', 'Olivia']
 
 
 class People(pg.sprite.Sprite):
-    def __init__(self, x: int, y: int):
+    def __init__(self, x: int, y: int, idef: int):
         pg.sprite.Sprite.__init__(self)
 
         self.image = pg.image.load("assets/people/people 2.png")
@@ -37,6 +37,9 @@ class People(pg.sprite.Sprite):
 
         # Output name
         self.font = pg.font.SysFont('arial', 12)
+
+        # Create system id
+        self.id = idef
 
     def update(self, screen):
         match random.randint(1, 7):
@@ -116,8 +119,8 @@ class People(pg.sprite.Sprite):
 
 
 class Man(People):
-    def __init__(self, x, y):
-        People.__init__(self, x, y)
+    def __init__(self, x, y, idef):
+        People.__init__(self, x, y, idef)
 
         # Set up image of Man
         self.image = pg.transform.scale(pg.image.load("assets/people/people 1.png"), (56, 64))
@@ -129,8 +132,8 @@ class Man(People):
 
 
 class Woman(People):
-    def __init__(self, x, y):
-        People.__init__(self, x, y)
+    def __init__(self, x, y, idef):
+        People.__init__(self, x, y, idef)
 
         # Set up image of Woman
         self.image = pg.transform.scale(pg.image.load("assets/people/people 2.png"), (56, 64))
