@@ -4,6 +4,7 @@ import pygame
 import random
 
 from people import Man, Woman
+from object_envorment import Tree
 
 # Constants
 WIDTH = 1200
@@ -41,6 +42,9 @@ def main():
     # Append in group
     group.add(people_0, people_1)
 
+    # Create tree
+    tree: Optional[pygame.sprite] = Tree(width // 2, height // 2)
+    group.add(tree)
     x = y = 0
 
     # Game loop
