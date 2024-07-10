@@ -1,3 +1,5 @@
+import math
+
 import pygame as pg
 import random
 
@@ -9,6 +11,7 @@ class People(pg.sprite.Sprite):
     def __init__(self, x: int, y: int, idef: int, years: int = 0):
         pg.sprite.Sprite.__init__(self)
 
+        self.mult = None
         self.image = pg.image.load("assets/people/people 2.png")
         self.images = None
         # Set up hitbox
@@ -123,7 +126,11 @@ class People(pg.sprite.Sprite):
 
     # Update because of years
     def grow_up(self):
-        self.image = pg.transform.scale(self.image, (round(56 * self.year / 20), round(64 * self.year / 20)))
+        if self.year <= 20:
+            self.mult = 2 ** (self.year / 20) - 1
+        else:
+            self.mult = math.log(20, self.year)
+        self.image = pg.transform.scale(self.image, (round(56 * self.mult), round(64 * self.mult)))
         self.day += 1
 
         if self.day == 30:

@@ -36,8 +36,8 @@ def main():
     group: Optional[pygame.sprite.Group] = pygame.sprite.Group()
 
     # Create first peoples
-    people_0: Optional[pygame.sprite] = Man(width // 2, height // 2, 0)
-    people_1: Optional[pygame.sprite] = Woman(width // 2, height // 2, 1)
+    people_0: Optional[pygame.sprite] = Man(width // 2, height // 2, 0,  20)
+    people_1: Optional[pygame.sprite] = Woman(width // 2, height // 2, 1, 10)
     # Append in group
     group.add(people_0, people_1)
 
@@ -84,6 +84,7 @@ def main():
 
         time += 1
         print(time)
+
 
 if __name__ == "__main__":
     main()
