@@ -6,7 +6,7 @@ women_names = ['Jona', 'Emma', 'Olivia']
 
 
 class People(pg.sprite.Sprite):
-    def __init__(self, x: int, y: int, idef: int):
+    def __init__(self, x: int, y: int, idef: int, years: int = 0):
         pg.sprite.Sprite.__init__(self)
 
         self.image = pg.image.load("assets/people/people 2.png")
@@ -39,10 +39,15 @@ class People(pg.sprite.Sprite):
         self.font = pg.font.SysFont('arial', 12)
 
         # Create system id
-        self.id = idef
+        self.id: int = idef
+
+        # Create system time
+        self.day: int = 0
+        self.mouth: int = 0
+        self.year: int = years
 
     def update(self, screen):
-        match random.randint(1, 7):
+        match random.randint(1, 20):
             case 1:
                 self.down = True
                 self.up = False
@@ -53,7 +58,7 @@ class People(pg.sprite.Sprite):
             case _:
                 self.up = self.down = False
 
-        match random.randint(1, 7):
+        match random.randint(1, 20):
             case 1:
                 self.right = True
                 self.left = False
@@ -69,6 +74,8 @@ class People(pg.sprite.Sprite):
         if self.rect.collidepoint(pg.mouse.get_pos()):
             surf = self.font.render(self._name, False, (0, 0, 0), (125, 124, 90))
             screen.blit(surf, (self.rect.topleft[0]+10, self.rect.topleft[1]-20))
+
+        self.grow_up()
 
     def move(self):
         pg.time.delay(20)
@@ -114,13 +121,23 @@ class People(pg.sprite.Sprite):
                 self.image = pg.transform.flip(self.image, True, False)
         self.flip = False
 
-    def get_name(self):
-        return self._name
+    # Update because of years
+    def grow_up(self):
+        self.image = pg.transform.scale(self.image, (round(56 * self.year / 20), round(64 * self.year / 20)))
+        self.day += 1
+
+        if self.day == 30:
+            self.day = 0
+            self.mouth += 1
+
+        if self.mouth == 12:
+            self.mouth = 0
+            self.year += 1
 
 
 class Man(People):
-    def __init__(self, x, y, idef):
-        People.__init__(self, x, y, idef)
+    def __init__(self, x, y, idef, years=0):
+        People.__init__(self, x, y, idef, years)
 
         # Set up image of Man
         self.image = pg.transform.scale(pg.image.load("assets/people/people 1.png"), (56, 64))
@@ -132,8 +149,8 @@ class Man(People):
 
 
 class Woman(People):
-    def __init__(self, x, y, idef):
-        People.__init__(self, x, y, idef)
+    def __init__(self, x, y, idef, years=0):
+        People.__init__(self, x, y, idef, years)
 
         # Set up image of Woman
         self.image = pg.transform.scale(pg.image.load("assets/people/people 2.png"), (56, 64))

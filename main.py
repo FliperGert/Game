@@ -23,6 +23,9 @@ def main():
 
     idef = 2
 
+    # Create system time
+    time = 0
+
     # Create var screen
     screen = pygame.display.set_mode((width, height))
 
@@ -40,28 +43,24 @@ def main():
 
     x = y = 0
 
-    # Function update people
-    def update_people(pl, x, y):
-        pl.update(screen)
-        pl.rect.x += x // 2
-        pl.rect.y += y // 2
     # Game loop
     while 1:
         # FPS
         pygame.time.Clock().tick(60)
 
         # Create a random reproduction
-        f = random.randint(1, 50)
-        if f == 1:
-            idef += 1
+        if len(group) < 5:
+            f = random.randint(1, 50)
+            if f == 1:
+                idef += 1
 
-            f1 = random.randint(1, 2)
-            if f1 == 1:
-                d: Optional[pygame.sprite] = Man(width // 2, height // 2, idef)
-                group.add(d)
-            if f1 == 2:
-                d: Optional[pygame.sprite] = Woman(width // 2, height // 2, idef)
-                group.add(d)
+                f1 = random.randint(1, 2)
+                if f1 == 1:
+                    d: Optional[pygame.sprite] = Man(width // 2, height // 2, idef)
+                    group.add(d)
+                if f1 == 2:
+                    d: Optional[pygame.sprite] = Woman(width // 2, height // 2, idef)
+                    group.add(d)
 
         # Check events
         for e in pygame.event.get():
@@ -77,9 +76,14 @@ def main():
         screen.fill(GREEN)
 
         for pl in group:
-            update_people(pl, x, y)
-        x = y = 0
+            pl.update(screen)
+            pl.rect.x += x // 2
+            pl.rect.y += y // 2
+        x //= 2
+        y //= 2
 
+        time += 1
+        print(time)
 
 if __name__ == "__main__":
     main()
