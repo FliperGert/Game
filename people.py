@@ -12,7 +12,7 @@ class People(pg.sprite.Sprite):
         pg.sprite.Sprite.__init__(self)
 
         self.mult = None
-        self.image = pg.image.load("assets/people/people 2.png")
+        self.image = pg.image.load("assets/people/people 2.png").convert()
         # Set up hitbox
         self.rect = self.image.get_rect()
 
@@ -149,8 +149,8 @@ class Man(People):
         People.__init__(self, x, y, idef, years)
 
         # Set up image of Man
-        self.image = pg.transform.scale(pg.image.load("assets/people/people 1.png"), (56, 64))
-        self.images = [pg.transform.scale(pg.image.load(f"assets/people/people_1_{i}.png"), (56, 64))
+        self.image = pg.transform.scale(pg.image.load("assets/people/people 1.png").convert_alpha(), (56, 64))
+        self.images = [pg.transform.scale(pg.image.load(f"assets/people/people_1_{i}.png").convert_alpha(), (56, 64))
                        for i in range(4)]
 
         # Random set name
@@ -162,8 +162,8 @@ class Woman(People):
         People.__init__(self, x, y, idef, years)
 
         # Set up image of Woman
-        self.image = pg.transform.scale(pg.image.load("assets/people/people 2.png"), (56, 64))
-        self.images = [pg.transform.scale(pg.image.load(f"assets/people/people_2_{i}.png"), (56, 64))
+        self.image = pg.transform.scale(pg.image.load("assets/people/people 2.png").convert_alpha(), (56, 64))
+        self.images = [pg.transform.scale(pg.image.load(f"assets/people/people_2_{i}.png").convert_alpha(), (56, 64))
                        for i in range(4)]
 
         # Random set name

@@ -14,7 +14,9 @@ GREEN = (0, 255, 0)
 
 # Initiation pygame
 pygame.init()
-
+# Limited pygame event(for optimization)
+pygame.event.set_allowed([pygame.QUIT, pygame.KEYUP, pygame.KEYDOWN, pygame.MOUSEBUTTONDOWN,
+                          pygame.MOUSEBUTTONUP, pygame.MOUSEWHEEL])
 
 def main():
     # Create vars and functions
@@ -74,6 +76,8 @@ def main():
                 pygame.mouse.get_rel()
             if e.type == pygame.MOUSEBUTTONUP:
                 x_m, y_m = pygame.mouse.get_rel()
+
+            # Move camera
             if e.type == pygame.KEYDOWN:
                 match e.key:
                     case pygame.K_UP:
@@ -102,13 +106,16 @@ def main():
 
         for pl in group:
             pl.update(screen)
+            # Move camera
             pl.rect.x += x_m // 2 + x_k
             pl.rect.y += y_m // 2 + y_k
+
+        # Slow camera for mouse
         x_m //= 2
         y_m //= 2
 
+        # Time update
         time += 1
-        print(time)
 
 
 if __name__ == "__main__":

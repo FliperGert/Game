@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="004001f4-0210-4394-a426-c7914eb7370b" name="Changes" comment="Добавил дерево как объект">
+    <list default="true" id="004001f4-0210-4394-a426-c7914eb7370b" name="Changes" comment="Добавил передвижение камеры на стрелочки и доработал появление детей">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/people.py" beforeDir="false" afterPath="$PROJECT_DIR$/people.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -273,7 +272,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720642716101</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Добавил передвижение камеры на стрелочки и доработал появление детей">
+      <option name="closed" value="true" />
+      <created>1720720071796</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1720720071796</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -309,6 +316,7 @@
     <MESSAGE value="просто бекап" />
     <MESSAGE value="Сделал время и возраст" />
     <MESSAGE value="Добавил дерево как объект" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил дерево как объект" />
+    <MESSAGE value="Добавил передвижение камеры на стрелочки и доработал появление детей" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил передвижение камеры на стрелочки и доработал появление детей" />
   </component>
 </project>
