@@ -39,9 +39,17 @@ def main():
     # Create group object
     group: Optional[pygame.sprite.Group] = pygame.sprite.Group()
 
+    # Create system reproduction
+    child = []
+    men = []
+    women = []
+    parents = {}
+
     # Create first peoples
     people_0: Optional[pygame.sprite] = Man(width // 2, height // 2, 0,  20)
-    people_1: Optional[pygame.sprite] = Woman(width // 2, height // 2, 1, 10)
+    people_1: Optional[pygame.sprite] = Woman(width // 2, height // 2, 1, 18)
+    # Add how child
+    child.extend([people_0, people_1])
     # Append in group
     group.add(people_0, people_1)
 
@@ -55,19 +63,27 @@ def main():
         # FPS
         pygame.time.Clock().tick(60)
 
-        # Create a random reproduction
-        if len(group) < 5:
-            f = random.randint(1, 50)
-            if f == 1:
-                idef += 1
+        # Check child
+        for ch in child:
+            print(ch.year)
+            if ch.year >= 18:
+                if type(ch) == Man:
+                    men.append(ch)
+                    child.remove(ch)
+                    print(men)
+                else:
+                    women.append(ch)
+                    child.remove(ch)
+                    print(women)
 
-                f1 = random.randint(1, 2)
-                if f1 == 1:
-                    d: Optional[pygame.sprite] = Man(width // 2, height // 2, idef)
-                    group.add(d)
-                if f1 == 2:
-                    d: Optional[pygame.sprite] = Woman(width // 2, height // 2, idef)
-                    group.add(d)
+        # Check women
+        for w in women:
+            gay = random.choice(men)
+            if not w.pare and not gay.pare and random.randint(1, 100) == 69:
+                w.pare = gay.pare = True
+                w.gay = gay.get_name()
+                gay.girl = w.get_name()
+                print(w.gay)
 
         # Check events
         for e in pygame.event.get():

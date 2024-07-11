@@ -49,6 +49,10 @@ class People(pg.sprite.Sprite):
         self.mouth: int = 0
         self.year: int = years
 
+        # Create system reproduction
+        self.pare: bool = False
+        self.children: str = ''
+
     def update(self, screen):
         match random.randint(1, 20):
             case 1:
@@ -141,6 +145,9 @@ class People(pg.sprite.Sprite):
             self.mouth = 0
             self.year += 1
 
+    def get_name(self):
+        return self._name
+
 
 class Man(People):
     def __init__(self, x, y, idef, years=0):
@@ -153,6 +160,9 @@ class Man(People):
 
         # Random set name
         self._name = random.choice(men_names)
+
+        # Create system reproduction
+        self.girl: str = ''
 
 
 class Woman(People):
@@ -167,5 +177,6 @@ class Woman(People):
         # Random set name
         self._name = random.choice(women_names)
 
-
+        # Create system reproduction
+        self.gay: str = ''
     
