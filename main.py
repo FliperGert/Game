@@ -18,6 +18,7 @@ pygame.init()
 pygame.event.set_allowed([pygame.QUIT, pygame.KEYUP, pygame.KEYDOWN, pygame.MOUSEBUTTONDOWN,
                           pygame.MOUSEBUTTONUP, pygame.MOUSEWHEEL])
 
+
 def main():
     # Create vars and functions
     # Create vars screen size
@@ -78,27 +79,23 @@ def main():
                 x_m, y_m = pygame.mouse.get_rel()
 
             # Move camera
-            if e.type == pygame.KEYDOWN:
-                match e.key:
-                    case pygame.K_UP:
-                        y_k = 20
-                    case pygame.K_DOWN:
-                        y_k = -20
-                    case pygame.K_LEFT:
-                        x_k = 20
-                    case pygame.K_RIGHT:
-                        x_k = -20
+            if e.type == pygame.KEYDOWN and e.key == pygame.K_UP:
+                y_k += 50
+            if e.type == pygame.KEYDOWN and e.key == pygame.K_DOWN:
+                y_k += -50
+            if e.type == pygame.KEYDOWN and e.key == pygame.K_LEFT:
+                x_k += 50
+            if e.type == pygame.KEYDOWN and e.key == pygame.K_RIGHT:
+                x_k += -50
 
-            if e.type == pygame.KEYUP:
-                match e.key:
-                    case pygame.K_UP:
-                        y_k = 0
-                    case pygame.K_DOWN:
-                        y_k = 0
-                    case pygame.K_LEFT:
-                        x_k = 0
-                    case pygame.K_RIGHT:
-                        x_k = 0
+            if e.type == pygame.KEYUP and e.key == pygame.K_UP:
+                y_k = 0
+            if e.type == pygame.KEYUP and e.key == pygame.K_DOWN:
+                y_k = 0
+            if e.type == pygame.KEYUP and e.key == pygame.K_LEFT:
+                x_k = 0
+            if e.type == pygame.KEYUP and e.key == pygame.K_RIGHT:
+                x_k = 0
 
         group.draw(screen)
         pygame.display.update()
