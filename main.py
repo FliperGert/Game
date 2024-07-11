@@ -45,7 +45,7 @@ def main():
     # Create tree
     tree: Optional[pygame.sprite] = Tree(width // 2, height // 2)
     group.add(tree)
-    x = y = 0
+    x_m = y_m = y_k = x_k = 0
 
     # Game loop
     while 1:
@@ -73,7 +73,28 @@ def main():
             if e.type == pygame.MOUSEBUTTONDOWN:
                 pygame.mouse.get_rel()
             if e.type == pygame.MOUSEBUTTONUP:
-                x, y = pygame.mouse.get_rel()
+                x_m, y_m = pygame.mouse.get_rel()
+            if e.type == pygame.KEYDOWN:
+                match e.key:
+                    case pygame.K_UP:
+                        y_k = 20
+                    case pygame.K_DOWN:
+                        y_k = -20
+                    case pygame.K_LEFT:
+                        x_k = 20
+                    case pygame.K_RIGHT:
+                        x_k = -20
+
+            if e.type == pygame.KEYUP:
+                match e.key:
+                    case pygame.K_UP:
+                        y_k = 0
+                    case pygame.K_DOWN:
+                        y_k = 0
+                    case pygame.K_LEFT:
+                        x_k = 0
+                    case pygame.K_RIGHT:
+                        x_k = 0
 
         group.draw(screen)
         pygame.display.update()
@@ -81,10 +102,10 @@ def main():
 
         for pl in group:
             pl.update(screen)
-            pl.rect.x += x // 2
-            pl.rect.y += y // 2
-        x //= 2
-        y //= 2
+            pl.rect.x += x_m // 2 + x_k
+            pl.rect.y += y_m // 2 + y_k
+        x_m //= 2
+        y_m //= 2
 
         time += 1
         print(time)

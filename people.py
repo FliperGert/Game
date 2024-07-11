@@ -13,9 +13,11 @@ class People(pg.sprite.Sprite):
 
         self.mult = None
         self.image = pg.image.load("assets/people/people 2.png")
-        self.images = None
         # Set up hitbox
         self.rect = self.image.get_rect()
+
+        self.image = pg.transform.scale(self.image, (1, 1))
+        self.images = None
 
         # Set up start coordination
         self.rect.centerx = x
