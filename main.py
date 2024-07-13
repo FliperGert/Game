@@ -46,7 +46,7 @@ def main():
     parents = {}
 
     # Create first peoples
-    people_0: Optional[pygame.sprite] = Man(width // 2, height // 2, 0,  20)
+    people_0: Optional[pygame.sprite] = Man(width // 2, height // 2, 0, 20)
     people_1: Optional[pygame.sprite] = Woman(width // 2, height // 2, 1, 18)
     # Add how child
     child.extend([people_0, people_1])
@@ -65,7 +65,6 @@ def main():
 
         # Check child
         for ch in child:
-            print(ch.year)
             if ch.year >= 18:
                 if type(ch) == Man:
                     men.append(ch)
@@ -84,6 +83,29 @@ def main():
                 w.gay = gay.get_name()
                 gay.girl = w.get_name()
                 print(w.gay)
+
+        # Check pare
+            if w.pare:
+                if random.randint(1, 1000) == 100:
+                    w.pregnant = True
+                    print('yes')
+
+        # Check pregnant women
+            if w.birth:
+                match random.randint(1, 3):
+                    case 1:
+                        people: Optional[pygame.sprite] = Woman(w.rect.centerx, w.rect.centery, idef)
+                        idef += 1
+                        group.add(people)
+                        child.append(people)
+                    case 2:
+                        people: Optional[pygame.sprite] = Man(w.rect.centerx, w.rect.centery, idef)
+                        idef += 1
+                        group.add(people)
+                        child.append(people)
+                    case _:
+                        pass
+                w.birth = False
 
         # Check events
         for e in pygame.event.get():

@@ -179,4 +179,15 @@ class Woman(People):
 
         # Create system reproduction
         self.gay: str = ''
-    
+        self.pregnant: bool = False
+        self.time_pregnant: int = 0
+        self.birth: bool = False
+
+    def update(self, screen):
+        People.update(self, screen)
+        # Update time pregnant
+        if self.pregnant:
+            self.time_pregnant += 1
+
+        if self.time_pregnant == 540:
+            self.birth = True
