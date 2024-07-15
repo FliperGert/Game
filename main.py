@@ -120,6 +120,7 @@ def main():
         for e in pygame.event.get():
             if e.type == pygame.QUIT:
                 raise SystemExit
+
             if e.type == pygame.MOUSEBUTTONDOWN:
                 for pl in people:
                     pl.focused()
@@ -127,6 +128,11 @@ def main():
             if e.type == pygame.MOUSEBUTTONUP:
                 x_m, y_m = pygame.mouse.get_rel()
 
+            # Power off focus
+            if e.type == pygame.KEYDOWN and e.key == pygame.K_ESCAPE:
+                camera_focus = False
+                for pl in people:
+                    pl.focus = False
             # Move camera
             if e.type == pygame.KEYDOWN and e.key == pygame.K_UP:
                 y_k += 50
@@ -152,13 +158,14 @@ def main():
 
         for pl in group:
             if pl in people:
-                if pl.focus and not camera_focus:
-                    camera_focus = True
-                    x_vel = -(pl.rect.centerx - width // 2)
-                    y_vel = -(pl.rect.centerx - height // 2)
                 if pl.focus and camera_focus:
                     x_vel = -pl.xvel
                     y_vel = -pl.yvel
+                if pl.focus and not camera_focus:
+                    camera_focus = True
+                    x_vel = -(pl.rect.centerx - width // 2)
+                    y_vel = -(pl.rect.centery - height // 2)
+
             # Move camera
             if camera_focus:
                 pl.rect.x += x_vel
