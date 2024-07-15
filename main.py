@@ -1,6 +1,7 @@
 from typing import Optional
 
 import pygame
+import pygame_gui as pu
 import random
 
 from people import Man, Woman
@@ -36,6 +37,9 @@ def main():
     # Create var screen
     screen = pygame.display.set_mode((width, height))
 
+    # Create UI manager
+    manager = pu.UIManager((width, height), theme_path='button.json')
+
     # Set up caption
     pygame.display.set_caption("")
 
@@ -63,6 +67,9 @@ def main():
     tree: Optional[pygame.sprite] = Tree(width // 2, height // 2)
     group.add(tree)
     objects.append(tree)
+
+    # Create button
+    menu_button = pu.elements.UIButton(pygame.Rect((10, 10), (50, 50)), "=", manager)
 
     x_m = y_m = y_k = x_k = x_vel = y_vel = 0
 
@@ -133,6 +140,7 @@ def main():
                 camera_focus = False
                 for pl in people:
                     pl.focus = False
+
             # Move camera
             if e.type == pygame.KEYDOWN and e.key == pygame.K_UP:
                 y_k += 50
@@ -151,7 +159,28 @@ def main():
                 x_k = 0
             if e.type == pygame.KEYUP and e.key == pygame.K_RIGHT:
                 x_k = 0
+            # Check menu button
+            if e.type == pu.UI_BUTTON_PRESSED:
+                if e.ui_element == menu_button:
+                    menu_button.hide()
+                    return_button = pu.elements.UIButton(pygame.Rect((10, 10), (150, 50)), "return", manager)
+                    setting_button = pu.elements.UIButton(pygame.Rect((10, 70), (150, 50)), "settings", manager)
+                    exit_button = pu.elements.UIButton(pygame.Rect((10, 130), (150, 50)), "exit", manager)
 
+                if e.ui_element == return_button:
+                    return_button.hide()
+                    setting_button.hide()
+                    exit_button.hide()
+                    menu_button.show()
+
+            # Manager check events
+            manager.process_events(e)
+
+        # Manager update
+        manager.update(pygame.time.Clock().tick(60) / 1000.0)
+        manager.draw_ui(screen)
+
+        # Window update
         group.draw(screen)
         pygame.display.update()
         screen.fill(GREEN)
@@ -174,6 +203,7 @@ def main():
                 pl.rect.x += x_m // 2 + x_k
                 pl.rect.y += y_m // 2 + y_k
             pl.update(screen)
+
         # Slow camera for mouse
         x_m //= 2
         y_m //= 2
