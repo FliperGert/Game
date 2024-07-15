@@ -53,6 +53,9 @@ class People(pg.sprite.Sprite):
         self.pare: bool = False
         self.children: str = ''
 
+        # Create camera
+        self.focus: bool = False
+
     def update(self, screen):
         match random.randint(1, 20):
             case 1:
@@ -84,8 +87,12 @@ class People(pg.sprite.Sprite):
 
         self.grow_up()
 
+    def focused(self):
+        if self.rect.collidepoint(pg.mouse.get_pos()):
+            self.focus = True
+
     def move(self):
-        pg.time.delay(20)
+        pg.time.delay(40)
         if self.xvel == 0 and self.yvel == 0:
             if self.run:
                 self.rect.x += 2
