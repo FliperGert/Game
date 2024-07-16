@@ -173,6 +173,8 @@ def main():
                     exit_button.hide()
                     menu_button.show()
 
+                if e.ui_element == exit_button:
+                    raise SystemExit
             # Manager check events
             manager.process_events(e)
 
