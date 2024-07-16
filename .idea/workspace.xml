@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="004001f4-0210-4394-a426-c7914eb7370b" name="Changes" comment="сделал наведение камеры на перса и отключение фокуса на esc">
-      <change afterPath="$PROJECT_DIR$/button.json" afterDir="false" />
+    <list default="true" id="004001f4-0210-4394-a426-c7914eb7370b" name="Changes" comment="Сделал систему пар">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasklist.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tasklist.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/people.py" beforeDir="false" afterPath="$PROJECT_DIR$/people.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -306,31 +305,7 @@
       <option name="project" value="LOCAL" />
       <updated>1720730455526</updated>
     </task>
-    <task id="LOCAL-00017" summary="они рожают">
-      <option name="closed" value="true" />
-      <created>1720901002287</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1720901002287</updated>
-    </task>
-    <task id="LOCAL-00018" summary="сделал камеру за персом(пока без наведения)">
-      <option name="closed" value="true" />
-      <created>1721041814954</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1721041814954</updated>
-    </task>
-    <task id="LOCAL-00019" summary="сделал наведение камеры на перса и отключение фокуса на esc">
-      <option name="closed" value="true" />
-      <created>1721047454273</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1721047454273</updated>
-    </task>
-    <option name="localTasksCounter" value="20" />
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -344,7 +319,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="main" />
+                        <option value="origin/main" />
                       </list>
                     </value>
                   </entry>
@@ -370,20 +345,6 @@
     <MESSAGE value="Поработал над оптимизацией" />
     <MESSAGE value="Поработал над ЧЕРТОВЙ оптимизацией" />
     <MESSAGE value="Сделал систему пар" />
-    <MESSAGE value="они рожают" />
-    <MESSAGE value="сделал камеру за персом(пока без наведения)" />
-    <MESSAGE value="сделал наведение камеры на перса и отключение фокуса на esc" />
-    <option name="LAST_COMMIT_MESSAGE" value="сделал наведение камеры на перса и отключение фокуса на esc" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <default-breakpoints>
-        <breakpoint type="python-exception">
-          <properties notifyOnTerminate="true" exception="BaseException">
-            <option name="notifyOnTerminate" value="true" />
-          </properties>
-        </breakpoint>
-      </default-breakpoints>
-    </breakpoint-manager>
+    <option name="LAST_COMMIT_MESSAGE" value="Сделал систему пар" />
   </component>
 </project>
