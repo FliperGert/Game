@@ -36,6 +36,9 @@ def main():
 
     # Create var screen
     screen = pygame.display.set_mode((width, height))
+    # Create background
+    background = pygame.Surface((800, 600))
+    background.fill(pygame.Color('#000000'))
 
     # Create UI manager
     manager = pu.UIManager((width, height), theme_path='button.json')
@@ -172,6 +175,12 @@ def main():
                     setting_button.hide()
                     exit_button.hide()
                     menu_button.show()
+                # Create exit and settings
+                if e.ui_element == setting_button:
+                    screen.blit(background, (0, 0))
+
+                if e.ui_element == exit_button:
+                    raise SystemExit
 
                 if e.ui_element == exit_button:
                     raise SystemExit
