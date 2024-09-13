@@ -1,11 +1,8 @@
-from colorsys import yiq_to_rgb
 from typing import Optional
 
 import pygame
 import pygame_gui as pu
 import random
-
-from Cython.Compiler.Nodes import relative_position
 
 from people import Man, Woman
 from object_envorment import Tree
@@ -84,12 +81,20 @@ def main():
     exit_button = pu.elements.UIButton(pygame.Rect((10, 130), (150, 50)), "exit", manager)
     exit_button.hide()
 
+    # Create game speed
+    game_speed = 1
+
+    # Create speed button
+    first_speed = pu.elements.UIButton(pygame.Rect((1000, 10), (50, 50)), '1', manager)
+    second_speed = pu.elements.UIButton(pygame.Rect((1060, 10), (50, 50)), '2', manager)
+    third_speed = pu.elements.UIButton(pygame.Rect((1120, 10), (50, 50)), '3', manager)
+
     x_m = y_m = y_k = x_k = x_vel = y_vel = 0
 
     # Game loop
     while 1:
         # FPS
-        pygame.time.Clock().tick(60)
+        pygame.time.Clock().tick(60 * game_speed)
 
         # Check child
         for ch in child:
@@ -188,6 +193,7 @@ def main():
                     setting_button.hide()
                     exit_button.hide()
                     menu_button.show()
+
                 # Create exit and settings
                 if e.ui_element == setting_button:
                     screen.blit(background, (0, 0))
@@ -195,8 +201,14 @@ def main():
                 if e.ui_element == exit_button:
                     raise SystemExit
 
-                if e.ui_element == exit_button:
-                    raise SystemExit
+                # Check press speed button
+                if e.ui_element == first_speed:
+                    game_speed = 1
+                if e.ui_element == second_speed:
+                    game_speed = 4
+                if e.ui_element == third_speed:
+                    game_speed = 8
+
             # Manager check events
             manager.process_events(e)
 

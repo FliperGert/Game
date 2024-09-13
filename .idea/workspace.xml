@@ -317,7 +317,23 @@
       <option name="project" value="LOCAL" />
       <updated>1720730455526</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Описание персонажей">
+      <option name="closed" value="true" />
+      <created>1726253054184</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1726253054184</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Описание персонажей">
+      <option name="closed" value="true" />
+      <created>1726253067747</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1726253067747</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
