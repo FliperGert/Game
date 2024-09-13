@@ -9,8 +9,9 @@ women_names = ['Jona', 'Emma', 'Olivia']
 
 
 class People(pg.sprite.Sprite):
-    def __init__(self, x: int, y: int, idef: int, years: int = 0):
+    def __init__(self, x: int, y: int, idef: int, parents: list, years: int = 0):
         pg.sprite.Sprite.__init__(self)
+
 
         self.mult = None
         self.image = pg.transform.scale(pg.image.load("assets/people/people 2.png").convert(), (1, 1))
@@ -40,7 +41,7 @@ class People(pg.sprite.Sprite):
         self._name: str = ""
 
         # Output name
-        self.font = pg.font.SysFont('arial', 12)
+        self.font = pg.font.SysFont('arial', 18)
 
         # Create system id
         self.id: int = idef
@@ -53,9 +54,14 @@ class People(pg.sprite.Sprite):
         # Create system reproduction
         self.pare: bool = False
         self.children: str = ''
-
+        self.parents: list = parents
+        if len(parents) == 0:
+            self.parents = ['God', 'God']
         # Create camera
         self.focus: bool = False
+
+        # Create var live
+        self.live: int = 100
 
     def update(self, screen):
         match random.randint(1, 20):
@@ -83,8 +89,8 @@ class People(pg.sprite.Sprite):
 
         # Check mouse on people
         if self.rect.collidepoint(pg.mouse.get_pos()):
-            surf = self.font.render(self._name, False, (0, 0, 0), (125, 124, 90))
-            screen.blit(surf, (self.rect.topleft[0]+10, self.rect.topleft[1]-20))
+            surf = self.font.render(self._name, False, (255, 255, 255), (0, 0, 0))
+            screen.blit(surf, (self.rect.topleft[0], self.rect.topleft[1]-20))
 
         self.grow_up()
 
@@ -158,8 +164,8 @@ class People(pg.sprite.Sprite):
 
 
 class Man(People):
-    def __init__(self, x, y, idef, years=0):
-        People.__init__(self, x, y, idef, years)
+    def __init__(self, x, y, idef, parents, years=0):
+        People.__init__(self, x, y, idef, parents, years)
 
         # Set up image of Man
         self.image = pg.transform.scale(pg.image.load("assets/people/people 1.png").convert_alpha(), (56, 64))
@@ -174,8 +180,8 @@ class Man(People):
 
 
 class Woman(People):
-    def __init__(self, x, y, idef, years=0):
-        People.__init__(self, x, y, idef, years)
+    def __init__(self, x, y, idef, parents, years=0):
+        People.__init__(self, x, y, idef, parents, years)
 
         # Set up image of Woman
         self.image = pg.transform.scale(pg.image.load("assets/people/people 2.png").convert_alpha(), (56, 64))

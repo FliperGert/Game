@@ -1,15 +1,18 @@
+from colorsys import yiq_to_rgb
 from typing import Optional
 
 import pygame
 import pygame_gui as pu
 import random
 
+from Cython.Compiler.Nodes import relative_position
+
 from people import Man, Woman
 from object_envorment import Tree
 
 # Constants
 WIDTH = 1200
-HEIGHT = 700
+HEIGHT = 600
 
 GREEN = (0, 255, 0)
 
@@ -58,8 +61,8 @@ def main():
     parents = {}
 
     # Create first peoples
-    people_0: Optional[pygame.sprite] = Man(width // 2, height // 2, 0, 20)
-    people_1: Optional[pygame.sprite] = Woman(width // 2, height // 2, 1, 18)
+    people_0: Optional[pygame.sprite] = Man(width // 2, height // 2, 0,[],20)
+    people_1: Optional[pygame.sprite] = Woman(width // 2, height // 2, 1, [],18)
     # Add how child
     child.extend([people_0, people_1])
     # Append in group
@@ -73,6 +76,13 @@ def main():
 
     # Create button
     menu_button = pu.elements.UIButton(pygame.Rect((10, 10), (50, 50)), "=", manager)
+
+    return_button = pu.elements.UIButton(pygame.Rect((10, 10), (150, 50)), "return", manager)
+    return_button.hide()
+    setting_button = pu.elements.UIButton(pygame.Rect((10, 70), (150, 50)), "settings", manager)
+    setting_button.hide()
+    exit_button = pu.elements.UIButton(pygame.Rect((10, 130), (150, 50)), "exit", manager)
+    exit_button.hide()
 
     x_m = y_m = y_k = x_k = x_vel = y_vel = 0
 
@@ -112,12 +122,14 @@ def main():
             if w.birth:
                 match random.randint(1, 3):
                     case 1:
-                        people: Optional[pygame.sprite] = Woman(w.rect.centerx, w.rect.centery, idef)
+                        people: Optional[pygame.sprite] = Woman(w.rect.centerx, w.rect.centery, idef,
+                                                                [w.get_name(), w.gay])
                         idef += 1
                         group.add(people)
                         child.append(people)
                     case 2:
-                        people: Optional[pygame.sprite] = Man(w.rect.centerx, w.rect.centery, idef)
+                        people: Optional[pygame.sprite] = Man(w.rect.centerx, w.rect.centery, idef,
+                                                                [w.get_name(), w.gay])
                         idef += 1
                         group.add(people)
                         child.append(people)
@@ -162,13 +174,14 @@ def main():
                 x_k = 0
             if e.type == pygame.KEYUP and e.key == pygame.K_RIGHT:
                 x_k = 0
+
             # Check menu button
             if e.type == pu.UI_BUTTON_PRESSED:
                 if e.ui_element == menu_button:
                     menu_button.hide()
-                    return_button = pu.elements.UIButton(pygame.Rect((10, 10), (150, 50)), "return", manager)
-                    setting_button = pu.elements.UIButton(pygame.Rect((10, 70), (150, 50)), "settings", manager)
-                    exit_button = pu.elements.UIButton(pygame.Rect((10, 130), (150, 50)), "exit", manager)
+                    return_button.show()
+                    setting_button.show()
+                    exit_button.show()
 
                 if e.ui_element == return_button:
                     return_button.hide()
@@ -201,6 +214,12 @@ def main():
                 if pl.focus and camera_focus:
                     x_vel = -pl.xvel
                     y_vel = -pl.yvel
+                    # Output info
+                    info_text = pu.elements.UITextBox(html_text=f'Name: {pl.get_name()}\n'
+                                                                f'HP: {pl.live}\n'
+                                                                f'Parents: {pl.parents[0]}, {pl.parents[1]}',
+                                                      relative_rect=pygame.Rect((0, 2 * height//3), (width//6, height//3)),
+                                                      manager=manager)
                 if pl.focus and not camera_focus:
                     camera_focus = True
                     x_vel = -(pl.rect.centerx - width // 2)
@@ -216,7 +235,9 @@ def main():
             pl.update(screen)
 
         # Slow camera for mouse
+        if x_m == 1: x_m = 0
         x_m //= 2
+        if y_m == 1: y_m = 0
         y_m //= 2
 
         # Slow focus camera
