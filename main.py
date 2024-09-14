@@ -212,9 +212,7 @@ def main():
             # Manager check events
             manager.process_events(e)
 
-        # Manager update
-        manager.update(pygame.time.Clock().tick(60) / 1000.0)
-        manager.draw_ui(screen)
+
 
         # Window update
         group.draw(screen)
@@ -222,7 +220,7 @@ def main():
         screen.fill(GREEN)
 
         for pl in group:
-            if pl in people:
+            if type(pl) is Man or type(pl) is Woman:
                 if pl.focus and camera_focus:
                     x_vel = -pl.xvel
                     y_vel = -pl.yvel
@@ -259,6 +257,9 @@ def main():
         # Time update
         time += 1
 
+        # Manager update
+        manager.update(pygame.time.Clock().tick(60) / 1000.0)
+        manager.draw_ui(screen)
 
 if __name__ == "__main__":
     main()

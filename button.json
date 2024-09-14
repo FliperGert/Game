@@ -4,7 +4,11 @@
     "colours":
     {
       "normal_bg": "#000",
-      "normal_text": "#FFF"
+      "normal_text": "#FFF",
+      "hovered_bg": "#808080",
+      "hovered_text": "000",
+      "selected_bg": "FFF",
+      "selected_text": "000"
     },
     "font":
     {
