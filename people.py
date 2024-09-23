@@ -205,3 +205,4 @@ class Woman(People):
 
         if self.time_pregnant == 540:
             self.birth = True
+            self.time_pregnant = 0

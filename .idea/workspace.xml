@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="004001f4-0210-4394-a426-c7914eb7370b" name="Changes" comment="дизайн">
+    <list default="true" id="004001f4-0210-4394-a426-c7914eb7370b" name="Changes" comment="работа над ошибками">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/button.json" beforeDir="false" afterPath="$PROJECT_DIR$/button.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/people.py" beforeDir="false" afterPath="$PROJECT_DIR$/people.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -350,7 +348,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726297265333</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="работа над ошибками">
+      <option name="closed" value="true" />
+      <created>1727272454105</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1727272454106</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -393,6 +399,7 @@
     <MESSAGE value="Описание персонажей" />
     <MESSAGE value="Скорость игры" />
     <MESSAGE value="дизайн" />
-    <option name="LAST_COMMIT_MESSAGE" value="дизайн" />
+    <MESSAGE value="работа над ошибками" />
+    <option name="LAST_COMMIT_MESSAGE" value="работа над ошибками" />
   </component>
 </project>

@@ -133,17 +133,17 @@ def main():
             if w.birth:
                 match random.randint(1, 3):
                     case 1:
-                        people: Optional[pygame.sprite] = Woman(w.rect.centerx, w.rect.centery, idef,
+                        people_b: Optional[pygame.sprite] = Woman(w.rect.centerx, w.rect.centery, idef,
                                                                 [w.get_name(), w.gay])
                         idef += 1
-                        group.add(people)
-                        child.append(people)
+                        group.add(people_b)
+                        child.append(people_b)
                     case 2:
-                        people: Optional[pygame.sprite] = Man(w.rect.centerx, w.rect.centery, idef,
+                        people_b: Optional[pygame.sprite] = Man(w.rect.centerx, w.rect.centery, idef,
                                                                 [w.get_name(), w.gay])
                         idef += 1
-                        group.add(people)
-                        child.append(people)
+                        group.add(people_b)
+                        child.append(people_b)
                     case _:
                         pass
                 w.birth = False
