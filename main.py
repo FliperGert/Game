@@ -81,6 +81,12 @@ def main():
     exit_button = pu.elements.UIButton(pygame.Rect((10, 130), (150, 50)), "exit", manager)
     exit_button.hide()
 
+    # Create info for people
+    info_text = pu.elements.UITextBox(html_text='',
+                                      relative_rect=pygame.Rect((0, 2 * height // 3), (width // 6, height // 3)),
+                                      manager=manager)
+    info_text.hide()
+
     # Create game speed
     game_speed = 1
 
@@ -158,6 +164,7 @@ def main():
             # Power off focus
             if e.type == pygame.KEYDOWN and e.key == pygame.K_ESCAPE:
                 camera_focus = False
+                info_text.hide()
                 for pl in people:
                     pl.focus = False
 
@@ -212,8 +219,6 @@ def main():
             # Manager check events
             manager.process_events(e)
 
-
-
         # Window update
         group.draw(screen)
         pygame.display.update()
@@ -224,12 +229,12 @@ def main():
                 if pl.focus and camera_focus:
                     x_vel = -pl.xvel
                     y_vel = -pl.yvel
+
                     # Output info
-                    info_text = pu.elements.UITextBox(html_text=f'Name: {pl.get_name()}\n'
-                                                                f'HP: {pl.live}\n'
-                                                                f'Parents: {pl.parents[0]}, {pl.parents[1]}',
-                                                      relative_rect=pygame.Rect((0, 2 * height//3), (width//6, height//3)),
-                                                      manager=manager)
+                    info_text.set_text(html_text=f'Name: {pl.get_name()}\nAge: {pl.year}\n'
+                                                 f'Parents: {pl.parents[0]}, {pl.parents[1]}')
+                    info_text.show()
+
                 if pl.focus and not camera_focus:
                     camera_focus = True
                     x_vel = -(pl.rect.centerx - width // 2)

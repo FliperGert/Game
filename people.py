@@ -41,7 +41,7 @@ class People(pg.sprite.Sprite):
         self._name: str = ""
 
         # Output name
-        self.font = pg.font.SysFont('arial', 18)
+        self.font = pg.font.SysFont('sans', 20)
 
         # Create system id
         self.id: int = idef
@@ -89,7 +89,7 @@ class People(pg.sprite.Sprite):
 
         # Check mouse on people
         if self.rect.collidepoint(pg.mouse.get_pos()):
-            surf = self.font.render(self._name, False, (255, 255, 255), (0, 0, 0))
+            surf = self.font.render(self._name, False, (255, 255, 255))
             screen.blit(surf, (self.rect.topleft[0], self.rect.topleft[1]-20))
 
         self.grow_up()

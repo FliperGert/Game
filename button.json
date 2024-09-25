@@ -3,12 +3,12 @@
   {
     "colours":
     {
-      "normal_bg": "#000",
-      "normal_text": "#FFF",
+      "normal_bg": "#000000",
+      "normal_text": "#FFFFFF",
       "hovered_bg": "#808080",
-      "hovered_text": "000",
-      "selected_bg": "FFF",
-      "selected_text": "000"
+      "hovered_text": "#000000",
+      "selected_bg": "#FFFFFF",
+      "selected_text": "#000000"
     },
     "font":
     {
