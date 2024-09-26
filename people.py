@@ -75,7 +75,7 @@ class People(pg.sprite.Sprite):
             case _:
                 self.up = self.down = False
 
-        match random.randint(1, 10):
+        match random.randint(1, 100):
             case 1:
                 self.right = True
                 self.left = False
@@ -99,7 +99,6 @@ class People(pg.sprite.Sprite):
             self.focus = True
 
     def move(self):
-        pg.time.delay(40)
         if self.xvel == 0 and self.yvel == 0:
             if self.run:
                 self.rect.x += 2

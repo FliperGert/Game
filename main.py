@@ -7,6 +7,8 @@ import random
 from people import Man, Woman
 from object_envorment import Tree
 
+from notification import text_notification
+
 # Constants
 WIDTH = 1200
 HEIGHT = 600
@@ -55,7 +57,6 @@ def main():
     child = []
     men = []
     women = []
-    parents = {}
 
     # Create first peoples
     people_0: Optional[pygame.sprite] = Man(width // 2, height // 2, 0,[],20)
@@ -95,6 +96,10 @@ def main():
     second_speed = pu.elements.UIButton(pygame.Rect((1060, 10), (50, 50)), '2', manager)
     third_speed = pu.elements.UIButton(pygame.Rect((1120, 10), (50, 50)), '3', manager)
 
+    # Create system notation
+    sys_not = pu.elements.UITextBox(html_text='', relative_rect=pygame.Rect((900, 400), (300, 30)),manager=manager)
+    sys_not.hide()
+
     x_m = y_m = y_k = x_k = x_vel = y_vel = 0
 
     # Game loop
@@ -121,13 +126,17 @@ def main():
                 w.pare = gay.pare = True
                 w.gay = gay.get_name()
                 gay.girl = w.get_name()
-                print(w.gay)
+                # Notification
+                sys_not.set_text(html_text=text_notification('pare', w.get_name(), w.gay))
+                sys_not.show()
 
             # Check pare
             if w.pare and not w.pregnant:
                 if random.randint(1, 1000) == 100:
                     w.pregnant = True
-                    print('yes')
+                    # Notification
+                    sys_not.set_text(html_text=text_notification('pare', w.get_name(), w.gay))
+                    sys_not.show()
 
             # Check pregnant women
             if w.birth:
@@ -136,11 +145,19 @@ def main():
                         people_b: Optional[pygame.sprite] = Woman(w.rect.centerx, w.rect.centery, idef,
                                                                 [w.get_name(), w.gay])
                         idef += 1
+                        # Notification
+                        sys_not.set_text(html_text=text_notification('birth', people_b.get_name()))
+                        sys_not.show()
+
                         group.add(people_b)
                         child.append(people_b)
                     case 2:
                         people_b: Optional[pygame.sprite] = Man(w.rect.centerx, w.rect.centery, idef,
                                                                 [w.get_name(), w.gay])
+                        # Notification
+                        sys_not.set_text(html_text=text_notification('birth', people_b.get_name()))
+                        sys_not.show()
+
                         idef += 1
                         group.add(people_b)
                         child.append(people_b)
