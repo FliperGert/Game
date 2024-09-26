@@ -64,7 +64,7 @@ class People(pg.sprite.Sprite):
         self.live: int = 100
 
     def update(self, screen):
-        match random.randint(1, 10):
+        match random.randint(1, 50):
             case 1:
                 self.down = True
                 self.up = False
@@ -75,7 +75,7 @@ class People(pg.sprite.Sprite):
             case _:
                 self.up = self.down = False
 
-        match random.randint(1, 100):
+        match random.randint(1, 50):
             case 1:
                 self.right = True
                 self.left = False
