@@ -5,7 +5,7 @@ import pygame_gui as pu
 import random
 
 from people import Man, Woman
-from object_envorment import Tree
+from object_envorment import Tree, Rock
 
 from notification import text_notification
 
@@ -67,10 +67,14 @@ def main():
     group.add(people_0, people_1)
     people.extend([people_0, people_1])
 
-    # Create tree
+    # Create objects
     tree: Optional[pygame.sprite] = Tree(width // 2, height // 2)
     group.add(tree)
     objects.append(tree)
+
+    rock: Optional[pygame.sprite] = Rock(width // 2 + 200, height // 2 + 40)
+    group.add(rock)
+    objects.append(rock)
 
     # Create button
     menu_button = pu.elements.UIButton(pygame.Rect((10, 10), (50, 50)), "=", manager)
@@ -275,6 +279,11 @@ def main():
         # Slow focus camera
         x_vel = 0
         y_vel = 0
+
+        # Objects near people
+        for pl in people:
+    
+                if pygame.sprite.spritecollide()
 
         # Time update
         time += 1
