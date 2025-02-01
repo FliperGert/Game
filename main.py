@@ -282,8 +282,7 @@ def main():
 
         # Objects near people
         for pl in people:
-    
-                if pygame.sprite.spritecollide()
+            pass
 
         # Time update
         time += 1
